@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Linksys Wrt1900acs OpenWrt
+name: Build Mini Linksys Wrt1900acs OpenWrt
 
 on:
   repository_dispatch:
