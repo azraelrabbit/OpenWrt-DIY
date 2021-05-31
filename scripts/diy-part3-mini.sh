@@ -31,14 +31,11 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 # Add luci-app-vssr <M>
 git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
+ 
 
-# Add mentohust & luci-app-mentohust
-git clone --depth=1 https://github.com/BoringCat/luci-app-mentohust
-git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
-
-# Add minieap & luci-proto-minieap
+# Add luci-proto-minieap
 git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
-svn co https://github.com/project-openwrt/openwrt/trunk/package/ntlf9t/minieap
+ 
 
 # Add ServerChan
 git clone --depth=1 https://github.com/tty228/luci-app-serverchan
@@ -72,7 +69,8 @@ rm -rf ../lean/luci-theme-argon
 
 # Use immortalwrt's luci-app-netdata
 rm -rf ../lean/luci-app-netdata
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
+# svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
+ svn co https://github.com/awesome-openwrt/luci-app-netdata/trunk
 
 # Add tmate
 git clone --depth=1 https://github.com/project-openwrt/openwrt-tmate
@@ -80,12 +78,10 @@ git clone --depth=1 https://github.com/project-openwrt/openwrt-tmate
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
-# Add gotop
-svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/gotop
-
+ 
 # Add smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
-svn co https://github.com/project-openwrt/openwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
+svn co https://github.com/immortalwrt/luci-app-smartdns/trunk ../luci-app-smartdns
 
 # Add luci-udptools
 git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
@@ -96,10 +92,7 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 # Add luci-app-oled (R2S Only)
 git clone --depth=1 https://github.com/NateLol/luci-app-oled
 
-# Add driver for rtl8821cu & rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8821cu
-popd
+ 
 
 # Add netdata
 pushd feeds/packages/admin
@@ -143,15 +136,4 @@ pushd po2lmo
 make && sudo make install
 popd
 
-# Change default shell to zsh, not use zsh [obsolete] , the zsh need more diskspace and cause ssh not login when not install zsh package by default.
-# sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
-
-# 修复核心及添加温度显示
-sed -i 's|pcdata(boardinfo.system or "?")|luci.sys.exec("uname -m") or "?"|g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-sed -i 's/or "1"%>/or "1"%> ( <%=luci.sys.exec("expr `cat \/sys\/class\/thermal\/thermal_zone0\/temp` \/ 1000") or "?"%> \&#8451; ) /g' feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status/index.htm
-
-# 加入 luci-app-freq
-pushd package/lean/
-rm -rf luci-app-cpufreq
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-cpufreq package/lean/luci-app-cpufreq
-popd
+ 

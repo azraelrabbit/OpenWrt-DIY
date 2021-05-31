@@ -14,7 +14,7 @@
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 # Add luci-theme-rosy
-git clone --depth=1 -b openwrt-18.06 https://github.com/shiyu1314/luci-theme-rosy
+git clone --depth=1 -b openwrt-18.06 https://github.com/immortalwrt/luci-theme-rosy
 rm -rf ../lean/luci-theme-rosy
 
 # Add luci-app-ssr-plus
@@ -69,7 +69,7 @@ git clone --depth=1 https://github.com/KFERMercer/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
 # Add luci-app-gowebdav
-git clone --depth=1 https://github.com/project-openwrt/openwrt-gowebdav
+git clone --depth=1 https://github.com/immortalwrt/openwrt-gowebdav
 # Add luci-theme-argon
 git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
@@ -77,20 +77,22 @@ rm -rf ../lean/luci-theme-argon
 
 # Use immortalwrt's luci-app-netdata
 rm -rf ../lean/luci-app-netdata
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
+# svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-netdata
+ svn co https://github.com/awesome-openwrt/luci-app-netdata/trunk
 
 # Add tmate
-git clone --depth=1 https://github.com/project-openwrt/openwrt-tmate
+git clone --depth=1 https://github.com/immortalwrt/openwrt-tmate
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
-# Add gotop
-svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/gotop
+## Add gotop -- remove unavailable
+# svn co https://github.com/project-openwrt/openwrt/trunk/package/ctcgfw/gotop
 
 # Add smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
-svn co https://github.com/project-openwrt/openwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
+#svn co https://github.com/immortalwrt/trunk/luci-app-smartdns ../luci-app-smartdns
+svn co https://github.com/immortalwrt/luci-app-smartdns/trunk ../luci-app-smartdns
 
 # Add luci-udptools
 git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
@@ -100,8 +102,9 @@ git clone --depth=1 https://github.com/destan19/OpenAppFilter
 # Add luci-app-oled (R2S Only)
 git clone --depth=1 https://github.com/NateLol/luci-app-oled
 # Add driver for rtl8821cu & rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8812au-ac
-svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8821cu
+#remove trl8821 driver, can not found
+#svn co https://github.com/immortalwrt/openwrt-feeds-driver-ext/branches/master/rtl8812au-ac
+# svn co https://github.com/project-openwrt/openwrt/branches/master/package/ctcgfw/rtl8821cu
 popd
 
 # Add netdata
